@@ -45,9 +45,9 @@ StopPod(){
     case ${value} in
        "pgpool") /root/kubernetes/cluster/kubectl.sh stop rc site-monitor-pgpool
           ;;
-       "nginx") /root/kubernetes/cluster/kubectl.sh stop rc site-monitor-nginx-controller
+       "nginx") /root/kubernetes/cluster/kubectl.sh stop rc nginx-controller
           ;;
-       "sitemonitor") /root/kubernetes/cluster/kubectl.sh stop rc site-monitor-unicorn-rc
+       "sitemonitor") /root/kubernetes/cluster/kubectl.sh stop rc unicorn-rc
           ;;
        "backend") /root/kubernetes/cluster/kubectl.sh stop rc site-monitor-backend
           ;;
