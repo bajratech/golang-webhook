@@ -45,7 +45,13 @@ func handleQuayResponse(body []byte) {
 		log.Println(err)
 	}
 
-	if strings.EqualFold(quayResponse.UpdatedTags[0], "latest") {
+	//TODO: should be latest only
+	if strings.EqualFold(quayResponse.UpdatedTags[0], "latest") ||
+	strings.EqualFold(quayResponse.UpdatedTags[0], "dev") ||
+	strings.EqualFold(quayResponse.UpdatedTags[0], "deployment") ||
+	strings.EqualFold(quayResponse.UpdatedTags[0], "migration_fix") ||
+	strings.EqualFold(quayResponse.UpdatedTags[0], "refactor-fix") ||
+	strings.EqualFold(quayResponse.UpdatedTags[0], "devTest"){
 		out, exec_err := exec.Command("/bin/sh", "start.sh", "-n", quayResponse.Name).Output()
 		if exec_err != nil {
 			log.Println(exec_err)
