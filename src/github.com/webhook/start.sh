@@ -31,6 +31,10 @@ StartPod(){
           ;;
        "deface") /root/kubernetes/cluster/kubectl.sh create -f /root/pods/deface-pod.yml
           ;;
+       "kafka") /root/kubernetes/cluster/kubectl.sh create -f /root/pods/kafka-pod.yml
+          ;;
+       "redis-server") /root/kubernetes/cluster/kubectl.sh create -f /root/pods/redis-pod.yml
+          ;;
        *)
           echo "`basename ${0}`:Error: Pod doesn't exist."
           exit 1 # Command to come out of the program with status 1
@@ -64,6 +68,10 @@ StopPod(){
        "linting") /root/kubernetes/cluster/kubectl.sh stop rc site-monitor-deface
           ;;
        "deface") /root/kubernetes/cluster/kubectl.sh stop rc site-monitor-linting
+          ;;
+       "kafka") /root/kubernetes/cluster/kubectl.sh stop rc site-monitor-kafka
+          ;;
+       "redis-server") /root/kubernetes/cluster/kubectl.sh stop rc redis-rc
           ;;
        *)
           echo "`basename ${0}`:Error: Pod doesn't exist."
