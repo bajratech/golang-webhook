@@ -9,31 +9,31 @@ StartPod(){
     echo "Starting pod..."
 
     case ${value} in
-       "pgpool") /root/kubernetes/cluster/kubectl.sh create -f /root/pods/pool-pod.yml
+       "pgpool") /root/run-cluster/kubernetes/cluster/kubectl.sh create -f /root/pods/pool-pod.yml
           ;;
-       "nginx") /root/kubernetes/cluster/kubectl.sh create -f /root/pods/nginx-pod.yml
+       "nginx") /root/run-cluster/kubernetes/cluster/kubectl.sh create -f /root/pods/nginx-pod.yml
           ;;
-       "sitemonitor") /root/kubernetes/cluster/kubectl.sh create -f /root/pods/unicorn-pod.yml
+       "sitemonitor") /root/run-cluster/kubernetes/cluster/kubectl.sh create -f /root/pods/unicorn-pod.yml
           ;;
-       "backend") /root/kubernetes/cluster/kubectl.sh create -f /root/pods/backend-pod.yml
+       "backend") /root/run-cluster/kubernetes/cluster/kubectl.sh create -f /root/pods/backend-pod.yml
           ;;
-       "scheduler") /root/kubernetes/cluster/kubectl.sh create -f /root/pods/scheduler-pod.yml
+       "scheduler") /root/run-cluster/kubernetes/cluster/kubectl.sh create -f /root/pods/scheduler-pod.yml
           ;;
-       "notification") /root/kubernetes/cluster/kubectl.sh create -f /root/pods/narad-pod.yml
+       "notification") /root/run-cluster/kubernetes/cluster/kubectl.sh create -f /root/pods/narad-pod.yml
           ;;
-       "headcrawler") /root/kubernetes/cluster/kubectl.sh create -f /root/pods/head-crawl-pod.yml
+       "headcrawler") /root/run-cluster/kubernetes/cluster/kubectl.sh create -f /root/pods/head-crawl-pod.yml
           ;;
-       "monitorcrawler") /root/kubernetes/cluster/kubectl.sh create -f /root/pods/full-crawl-pod.yml
+       "monitorcrawler") /root/run-cluster/kubernetes/cluster/kubectl.sh create -f /root/pods/full-crawl-pod.yml
           ;;
-       "yslow") /root/kubernetes/cluster/kubectl.sh create -f /root/pods/yslow-pod.yml
+       "yslow") /root/run-cluster/kubernetes/cluster/kubectl.sh create -f /root/pods/yslow-pod.yml
           ;;
-       "linting") /root/kubernetes/cluster/kubectl.sh create -f /root/pods/lint-pod.yml
+       "linting") /root/run-cluster/kubernetes/cluster/kubectl.sh create -f /root/pods/lint-pod.yml
           ;;
-       "deface") /root/kubernetes/cluster/kubectl.sh create -f /root/pods/deface-pod.yml
+       "deface") /root/run-cluster/kubernetes/cluster/kubectl.sh create -f /root/pods/deface-pod.yml
           ;;
-       "kafka") /root/kubernetes/cluster/kubectl.sh create -f /root/pods/kafka-pod.yml
+       "kafka") /root/run-cluster/kubernetes/cluster/kubectl.sh create -f /root/pods/kafka-pod.yml
           ;;
-       "redis-server") /root/kubernetes/cluster/kubectl.sh create -f /root/pods/redis-pod.yml
+       "redis-server") /root/run-cluster/kubernetes/cluster/kubectl.sh create -f /root/pods/redis-pod.yml
           ;;
        *)
           echo "`basename ${0}`:Error: Pod doesn't exist."
@@ -43,35 +43,35 @@ StartPod(){
 
 }
 
-StopPod(){
-    echo "Stopping pod..."
+deletePod(){
+    echo "deleteping pod..."
 
     case ${value} in
-       "pgpool") /root/kubernetes/cluster/kubectl.sh stop rc site-monitor-pgpool
+       "pgpool") /root/run-cluster/kubernetes/cluster/kubectl.sh delete rc site-monitor-pgpool
           ;;
-       "nginx") /root/kubernetes/cluster/kubectl.sh stop rc nginx-controller
+       "nginx") /root/run-cluster/kubernetes/cluster/kubectl.sh delete rc nginx-controller
           ;;
-       "sitemonitor") /root/kubernetes/cluster/kubectl.sh stop rc unicorn-rc
+       "sitemonitor") /root/run-cluster/kubernetes/cluster/kubectl.sh delete rc unicorn-rc
           ;;
-       "backend") /root/kubernetes/cluster/kubectl.sh stop rc site-monitor-backend
+       "backend") /root/run-cluster/kubernetes/cluster/kubectl.sh delete rc site-monitor-backend
           ;;
-       "scheduler") /root/kubernetes/cluster/kubectl.sh stop rc site-monitor-scheduler
+       "scheduler") /root/run-cluster/kubernetes/cluster/kubectl.sh delete rc site-monitor-scheduler
           ;;
-       "notification") /root/kubernetes/cluster/kubectl.sh stop rc site-monitor-notification
+       "notification") /root/run-cluster/kubernetes/cluster/kubectl.sh delete rc site-monitor-notification
           ;;
-       "headcrawler") /root/kubernetes/cluster/kubectl.sh stop rc site-monitor-head-crawl
+       "headcrawler") /root/run-cluster/kubernetes/cluster/kubectl.sh delete rc site-monitor-head-crawl
           ;;
-       "monitorcrawler") /root/kubernetes/cluster/kubectl.sh stop rc site-monitor-full-crawl
+       "monitorcrawler") /root/run-cluster/kubernetes/cluster/kubectl.sh delete rc site-monitor-full-crawl
           ;;
-       "yslow") /root/kubernetes/cluster/kubectl.sh stop rc site-monitor-yslow
+       "yslow") /root/run-cluster/kubernetes/cluster/kubectl.sh delete rc site-monitor-yslow
           ;;
-       "linting") /root/kubernetes/cluster/kubectl.sh stop rc site-monitor-deface
+       "linting") /root/run-cluster/kubernetes/cluster/kubectl.sh delete rc site-monitor-deface
           ;;
-       "deface") /root/kubernetes/cluster/kubectl.sh stop rc site-monitor-linting
+       "deface") /root/run-cluster/kubernetes/cluster/kubectl.sh delete rc site-monitor-linting
           ;;
-       "kafka") /root/kubernetes/cluster/kubectl.sh stop rc site-monitor-kafka
+       "kafka") /root/run-cluster/kubernetes/cluster/kubectl.sh delete rc site-monitor-kafka
           ;;
-       "redis-server") /root/kubernetes/cluster/kubectl.sh stop rc redis-rc
+       "redis-server") /root/run-cluster/kubernetes/cluster/kubectl.sh delete rc redis-rc
           ;;
        *)
           echo "`basename ${0}`:Error: Pod doesn't exist."
@@ -84,7 +84,7 @@ StopPod(){
 }
 
 case ${option} in
-   -n) StopPod
+   -n) deletePod
       ;;
    *)
       echo "`basename ${0}`:usage: [-n name]"
