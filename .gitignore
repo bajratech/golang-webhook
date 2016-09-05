@@ -3,5 +3,5 @@ bin/
 *.iml
 pkg/
 src/github.com/*
-!src/github.com/bajratech/webhook
+!src/github.com/bajratech/
 src/gopkg.in
