@@ -15,7 +15,7 @@ StartPod(){
           ;;
        "sitemonitor") /root/run-cluster/kubernetes/cluster/kubectl.sh create -f /root/pods/unicorn-pod.yml
           ;;
-       "backend") /root/run-cluster/kubernetes/cluster/kubectl.sh create -f /root/pods/backend-pod.yml
+       "backend") /root/run-cluster/kubernetes/cluster/kubectl.sh create -f /root/pods/bossman-pod.yml
           ;;
        "scheduler") /root/run-cluster/kubernetes/cluster/kubectl.sh create -f /root/pods/scheduler-pod.yml
           ;;
@@ -47,31 +47,31 @@ deletePod(){
     echo "deleteping pod..."
 
     case ${value} in
-       "pgpool") /root/run-cluster/kubernetes/cluster/kubectl.sh delete rc site-monitor-pgpool
+       "pgpool") /root/run-cluster/kubernetes/cluster/kubectl.sh delete rc site-granny-pgpool
           ;;
-       "nginx") /root/run-cluster/kubernetes/cluster/kubectl.sh delete rc nginx-controller
+       "nginx") /root/run-cluster/kubernetes/cluster/kubectl.sh delete rc site-granny-nginx
           ;;
-       "sitemonitor") /root/run-cluster/kubernetes/cluster/kubectl.sh delete rc unicorn-rc
+       "sitemonitor") /root/run-cluster/kubernetes/cluster/kubectl.sh delete rc site-granny-unicorn
           ;;
-       "backend") /root/run-cluster/kubernetes/cluster/kubectl.sh delete rc site-monitor-backend
+       "backend") /root/run-cluster/kubernetes/cluster/kubectl.sh delete rc site-granny-bossman
           ;;
-       "scheduler") /root/run-cluster/kubernetes/cluster/kubectl.sh delete rc site-monitor-scheduler
+       "scheduler") /root/run-cluster/kubernetes/cluster/kubectl.sh delete rc site-granny-scheduler
           ;;
-       "notification") /root/run-cluster/kubernetes/cluster/kubectl.sh delete rc site-monitor-notification
+       "notification") /root/run-cluster/kubernetes/cluster/kubectl.sh delete rc site-granny-narad
           ;;
-       "headcrawler") /root/run-cluster/kubernetes/cluster/kubectl.sh delete rc site-monitor-head-crawl
+       "headcrawler") /root/run-cluster/kubernetes/cluster/kubectl.sh delete rc site-granny-head-crawl
           ;;
-       "monitorcrawler") /root/run-cluster/kubernetes/cluster/kubectl.sh delete rc site-monitor-full-crawl
+       "monitorcrawler") /root/run-cluster/kubernetes/cluster/kubectl.sh delete rc site-granny-full-crawl
           ;;
-       "yslow") /root/run-cluster/kubernetes/cluster/kubectl.sh delete rc site-monitor-yslow
+       "yslow") /root/run-cluster/kubernetes/cluster/kubectl.sh delete rc site-granny-yslow
           ;;
-       "linting") /root/run-cluster/kubernetes/cluster/kubectl.sh delete rc site-monitor-linting
+       "linting") /root/run-cluster/kubernetes/cluster/kubectl.sh delete rc site-granny-lint
           ;;
-       "deface") /root/run-cluster/kubernetes/cluster/kubectl.sh delete rc site-monitor-deface
+       "deface") /root/run-cluster/kubernetes/cluster/kubectl.sh delete rc site-granny-deface
           ;;
-       "kafka") /root/run-cluster/kubernetes/cluster/kubectl.sh delete rc site-monitor-kafka
+       "kafka") /root/run-cluster/kubernetes/cluster/kubectl.sh delete rc site-granny-kafka
           ;;
-       "redis-server") /root/run-cluster/kubernetes/cluster/kubectl.sh delete rc redis-rc
+       "redis-server") /root/run-cluster/kubernetes/cluster/kubectl.sh delete rc site-granny-redis
           ;;
        *)
           echo "`basename ${0}`:Error: Pod doesn't exist."
