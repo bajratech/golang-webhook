@@ -39,7 +39,7 @@ StartPod(){
           ;;
        *)
           echo "`basename ${0}`:Error: Pod doesn't exist."
-          exit 1 # Command to come out of the program with status 1
+          exit 0 # Command to come out of the program with status 1
           ;;
     esac
 
@@ -75,11 +75,11 @@ deletePod(){
           ;;
        "redis-server") kubectl delete rc redis-rc
           ;;
-       "rupaiya") kubectl delete rc redis-rc
+       "rupaiya") kubectl delete rc site-monitor-rupaiya
           ;;
        *)
           echo "`basename ${0}`:Error: Pod doesn't exist."
-          exit 1 # Command to come out of the program with status 1
+          exit 0 # Command to come out of the program with status 1
           ;;
     esac
 
