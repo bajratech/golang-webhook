@@ -46,7 +46,7 @@ func handleQuayResponse(body []byte) {
 	}
 
 	//TODO: should be latest only
-	if strings.EqualFold(quayResponse.UpdatedTags[0], "latest") {
+	if strings.EqualFold(quayResponse.UpdatedTags[0], "staging") {
 		out, exec_err := exec.Command("/bin/sh", "start.sh", "-n", quayResponse.Name).Output()
 		if exec_err != nil {
 			log.Println(exec_err)
