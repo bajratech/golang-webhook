@@ -1,6 +1,7 @@
 package main
 import (
 	"fmt"
+	"time"
 	"net/http"
 	"encoding/json"
 	"log"
@@ -37,7 +38,7 @@ func QuayResponse(w http.ResponseWriter, r *http.Request) {
 
 func handleQuayResponse(body []byte) {
 
-	fmt.Println("Message Received:", string(body))
+	fmt.Println(time.Now(), "Message Received:", string(body))
 
 	quayResponse := models.Response{}
 	err := json.Unmarshal(body, &quayResponse)
