@@ -35,7 +35,7 @@ StartPod(){
           ;;
        "redis-server") kubectl create -f /root/pods/redis-pod.yml
           ;;
-       "angular") kubectl create -f /root/pods/angular-pod.yml
+       "hawk-angular") kubectl create -f /root/pods/angular-pod.yml
           ;;
        "pagerank") kubectl create -f /root/pods/pagerank-pod.yml
           ;;
@@ -79,7 +79,7 @@ deletePod(){
           ;;
        "redis-server") kubectl delete rc redis-rc
           ;;
-       "angular") kubectl delete rc site-granny-angular
+       "hawk-angular") kubectl delete rc site-granny-angular
           ;;
        "pagerank") kubectl delete rc site-granny-pagerank
           ;;
