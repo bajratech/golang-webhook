@@ -35,6 +35,10 @@ StartPod(){
           ;;
        "redis-server") kubectl create -f /root/deployment/pods/redis-pod.yml
           ;;
+       "angular") kubectl create -f /root/deployment/pods/angular-pod.yml
+          ;;
+       "pagerank") kubectl create -f /root/deployment/pods/pagerank-pod.yml
+          ;;
        "rupaiya") kubectl create -f /root/deployment/pods/rupaiya-pod.yml
           ;;
        *)
@@ -74,6 +78,10 @@ deletePod(){
        "kafka") kubectl delete rc site-granny-kafka
           ;;
        "redis-server") kubectl delete rc site-granny-redis
+          ;;
+       "angular") kubectl delete rc site-granny-angular
+          ;;
+       "pagerank") kubectl delete rc site-granny-pagerank
           ;;
        "rupaiya") kubectl delete rc site-granny-rupaiya
           ;;
