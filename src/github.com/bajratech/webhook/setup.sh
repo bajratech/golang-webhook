@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# build go project to get binary
+go build
+
 # copy supervisor config
 cp webhook.conf /etc/supervisor/conf.d/
 
@@ -10,4 +13,4 @@ cp start.sh /usr/bin/
 
 # give executable access to script
 chmod +x /usr/bin/webhook.sh
-chmod +x /usr/bin/start.cat we  sh
+chmod +x /usr/bin/start.sh
